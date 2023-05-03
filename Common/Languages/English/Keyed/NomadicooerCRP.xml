@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<LanguageData>
+    <!-- btn-->
+    <nc.rw.crp.btn.ConditionalRandomPawns>条件随机</nc.rw.crp.btn.ConditionalRandomPawns>
+    <nc.rw.crp.btn.Settings>设置条件</nc.rw.crp.btn.Settings>
+    <!-- label-->
+    <nc.rw.crp.label.MaxTimes>次数上限:</nc.rw.crp.label.MaxTimes>
+    <nc.rw.crp.label.tooltip.MaxTimes>设置随机角色的最大次数</nc.rw.crp.label.tooltip.MaxTimes>
+    <nc.rw.crp.label.Gender>选择性别:</nc.rw.crp.label.Gender>
+    <nc.rw.crp.label.Age>年龄范围:</nc.rw.crp.label.Age>
+    <nc.rw.crp.label.tooltip.Age>设置角色的年龄范围</nc.rw.crp.label.tooltip.Age>
+    <nc.rw.crp.label.Shooting>射击等级:</nc.rw.crp.label.Shooting>
+    <nc.rw.crp.label.tooltip.Shooting>设置射击等级范围</nc.rw.crp.label.tooltip.Shooting>
+    <nc.rw.crp.label.Melee>格斗等级:</nc.rw.crp.label.Melee>
+    <nc.rw.crp.label.tooltip.Melee>设置格斗等级范围</nc.rw.crp.label.tooltip.Melee>
+    <nc.rw.crp.label.Construction>建造等级:</nc.rw.crp.label.Construction>
+    <nc.rw.crp.label.tooltip.Construction>设置建造等级范围</nc.rw.crp.label.tooltip.Construction>
+    <nc.rw.crp.label.Mining>采矿等级:</nc.rw.crp.label.Mining>
+    <nc.rw.crp.label.tooltip.Mining>设置采矿等级范围</nc.rw.crp.label.tooltip.Mining>
+    <nc.rw.crp.label.Cooking>烹饪等级:</nc.rw.crp.label.Cooking>
+    <nc.rw.crp.label.tooltip.Cooking>设置烹饪等级范围</nc.rw.crp.label.tooltip.Cooking>
+    <nc.rw.crp.label.Plants>种植等级:</nc.rw.crp.label.Plants>
+    <nc.rw.crp.label.tooltip.Plants>设置种植等级范围</nc.rw.crp.label.tooltip.Plants>
+    <nc.rw.crp.label.Animals>驯兽等级:</nc.rw.crp.label.Animals>
+    <nc.rw.crp.label.tooltip.Animals>设置驯兽等级范围</nc.rw.crp.label.tooltip.Animals>
+    <nc.rw.crp.label.Crafting>手工等级:</nc.rw.crp.label.Crafting>
+    <nc.rw.crp.label.tooltip.Crafting>设置手工等级范围</nc.rw.crp.label.tooltip.Crafting>
+    <nc.rw.crp.label.Artistic>艺术等级:</nc.rw.crp.label.Artistic>
+    <nc.rw.crp.label.tooltip.Artistic>设置艺术等级范围</nc.rw.crp.label.tooltip.Artistic>
+    <nc.rw.crp.label.Medical>医药等级:</nc.rw.crp.label.Medical>
+    <nc.rw.crp.label.tooltip.Medical>设置医药等级范围</nc.rw.crp.label.tooltip.Medical>
+    <nc.rw.crp.label.Social>社交等级:</nc.rw.crp.label.Social>
+    <nc.rw.crp.label.tooltip.Social>设置社交等级范围</nc.rw.crp.label.tooltip.Social>
+    <nc.rw.crp.label.Intellectual>智识等级:</nc.rw.crp.label.Intellectual>
+    <nc.rw.crp.label.tooltip.Intellectual>设置智识等级范围</nc.rw.crp.label.tooltip.Intellectual>
+    <!--enum-->
+    <nc.rw.crp.enum.Gender.None>不限</nc.rw.crp.enum.Gender.None>
+    <nc.rw.crp.enum.Gender.Male>男</nc.rw.crp.enum.Gender.Male>
+    <nc.rw.crp.enum.Gender.Female>女</nc.rw.crp.enum.Gender.Female>
+</LanguageData>
