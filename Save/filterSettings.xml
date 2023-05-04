@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <misc>
+    <filterMode>OneInMillion</filterMode>
+    <maxTimes>1000</maxTimes>
+    <matchMode>Any</matchMode>
+    <gender>None</gender>
+    <disableWorkState>Nothing</disableWorkState>
+    <healthState>Nothing</healthState>
+    <relationshipState>Any</relationshipState>
+    <ageRange>
+      <min>0</min>
+      <max>100</max>
+    </ageRange>
+  </misc>
+  <skills>
+    <shootingRange>
+      <min>0</min>
+      <max>20</max>
+    </shootingRange>
+    <meleeRange>
+      <min>0</min>
+      <max>20</max>
+    </meleeRange>
+    <constructionRange>
+      <min>0</min>
+      <max>20</max>
+    </constructionRange>
+    <miningRange>
+      <min>0</min>
+      <max>20</max>
+    </miningRange>
+    <cookingRange>
+      <min>0</min>
+      <max>20</max>
+    </cookingRange>
+    <plantsRange>
+      <min>0</min>
+      <max>20</max>
+    </plantsRange>
+    <animalsRange>
+      <min>0</min>
+      <max>20</max>
+    </animalsRange>
+    <craftingRange>
+      <min>0</min>
+      <max>20</max>
+    </craftingRange>
+    <artisticRange>
+      <min>0</min>
+      <max>20</max>
+    </artisticRange>
+    <medicalRange>
+      <min>0</min>
+      <max>20</max>
+    </medicalRange>
+    <socialRange>
+      <min>0</min>
+      <max>20</max>
+    </socialRange>
+    <intellectualRange>
+      <min>0</min>
+      <max>20</max>
+    </intellectualRange>
+  </skills>
+  <childHoodBackstories />
+  <adulthoodBackstories />
+  <traits />
+</settings>

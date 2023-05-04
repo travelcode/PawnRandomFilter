@@ -1,41 +1,154 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
 <LanguageData>
+    <None>None</None>
+    <Nomadicooer>Nomadicooer</Nomadicooer>
+    <SpawnCategories>Spawn Categories:</SpawnCategories>
+    <SkillGains>Skill Gains:</SkillGains>
+    <DisableWorks>Disable Works:</DisableWorks>
+    <DisabledWorkGivers>Disabled Work Givers:</DisabledWorkGivers>
+    <DisallowedTraits>Disallowed Traits:</DisallowedTraits>
+    <ForcedTraits>Forced Traits:</ForcedTraits>
+    <Shuffleable>Shuffleable:</Shuffleable>
+    <Possessions>Possessions:</Possessions>
+    <IsPlayerColonyChildBackstory>Is Player Colony Child Backstory:</IsPlayerColonyChildBackstory>
+    <disableHostilityFromAnimalType>Disable Hostility From Animal Type:</disableHostilityFromAnimalType>
+    <disableHostilityFromFaction>Disable Hostility From Faction:</disableHostilityFromFaction>
+    <AllowedMeditationFocusTypes>Allowed Meditation Focus Types:</AllowedMeditationFocusTypes>
+    <exclusionTags>Exclusion Tags:</exclusionTags>
+    <Yes>Yes</Yes>
+    <No>No</No>
+    <Disable>Disable</Disable>
+    <Enable>Enable</Enable>
+    <Save>Save</Save>
+    <Rest>Rest</Rest>
+    <commonality>commonality</commonality>
+    <conflictingTraits>Conflicting Traits:</conflictingTraits>
+    <conflictingPassions>Conflicting Passions:</conflictingPassions>
+    <forcedPassions>Forced Passions</forcedPassions>
+    <disabledWorkTags>DisabledWork Tags:</disabledWorkTags>
+    <Canine>Canine</Canine>
+    <Dryad>Dryad</Dryad>
+    <InsectsRelated>Insects Related</InsectsRelated>
+    <Offworld>Offworld</Offworld>
+    <Pirate>Pirate</Pirate>
+    <Farmer>Farmer</Farmer>
+    <ImperialCommon>Imperial Common</ImperialCommon>
+    <ImperialFighter>Imperial Fighter</ImperialFighter>
+    <Vatgrown>Vatgrown</Vatgrown>
+    <Outlander>Outlander</Outlander>
+    <Madman>Madman</Madman>
+    <Scientist>Scientist</Scientist>
+    <Miner>Miner</Miner>
+    <Newborn>Newborn</Newborn>
+    <Child>Child</Child>
+    <ChildTribal>Child Tribal</ChildTribal>
+    <AdultColonist>Adult Colonist</AdultColonist>
+    <AdultTribal>Adult Tribal</AdultTribal>
+    <VatGrown>VatGrown</VatGrown>
+    <Tribal>Tribal</Tribal>
+    <TribalFarmer>Tribal Farmer</TribalFarmer>
+    <Hunter>Hunter</Hunter>
+    <ImperialRoyal>Imperial Royal</ImperialRoyal>
+    <Logger>Logger</Logger>
+    <Outsider>Outsider</Outsider>
+    <TribalHunter>Tribal Hunter</TribalHunter>
+    <TribalLogger>Tribal Logger</TribalLogger>
+    <TribalMiner>Tribal Miner</TribalMiner>
+    <Slave>Slave</Slave>
+    <Trader>Trader</Trader>
+    <Civil>Civil</Civil>
+    <StopRandomReason>Stop Random Reason:</StopRandomReason>
+    <StopRandomReason.None>rimworld Base talent recruitment: {maxTimes} resumes were planned to be accepted, but {curTimes} resumes were actually received. Due to 996, the hr in charge of recruitment this time has resigned, so the recruitment plan is terminated in advance.</StopRandomReason.None>
+    <StopRandomReason.User>rimworld Recruitment Report, planned to receive {maxTimes} resumes, actually received {curTimes} resumes, because the boss thought the hiring process was slow, so the hiring plan was terminated early.</StopRandomReason.User>
+    <StopRandomReason.Find>rimworld Talent Recruitment Report: Planned to receive {maxTimes} resumes, but actually received {curTimes} resumes. The recruitment progress exceeded the expectation and the desired talents were recruited ahead of time</StopRandomReason.Find>
+    <StopRandomReason.MaxTimes>rimworld New Base Talent Recruitment Report, planned to receive {maxTimes} resumes, but actually received {curTimes} resumes. Because the number of resumes received has reached the planned number of resumes, this recruitment plan has been terminated. Unfortunately, suitable candidates cannot be recruited.</StopRandomReason.MaxTimes>
+    <StopRandomReason.PawnNull>rimworld Recruitment Report: Planned {maxTimes} resumes received {curTimes} resumes received, and then no applicants, so had to stop the recruitment programme</StopRandomReason.PawnNull>
+
+    <!-- normal-->
+    <nc.rw.crp.DialogSettings>Filter option Settings</nc.rw.crp.DialogSettings>
     <!-- btn-->
-    <nc.rw.crp.btn.ConditionalRandomPawns>条件随机</nc.rw.crp.btn.ConditionalRandomPawns>
-    <nc.rw.crp.btn.Settings>设置条件</nc.rw.crp.btn.Settings>
+    <nc.rw.crp.btn.StartFilter>Begin Filter</nc.rw.crp.btn.StartFilter>
+    <nc.rw.crp.btn.EndFilter>End Filter</nc.rw.crp.btn.EndFilter>
+    <nc.rw.crp.btn.Settings>option Settings</nc.rw.crp.btn.Settings>
     <!-- label-->
-    <nc.rw.crp.label.MaxTimes>次数上限:</nc.rw.crp.label.MaxTimes>
-    <nc.rw.crp.label.tooltip.MaxTimes>设置随机角色的最大次数</nc.rw.crp.label.tooltip.MaxTimes>
-    <nc.rw.crp.label.Gender>选择性别:</nc.rw.crp.label.Gender>
-    <nc.rw.crp.label.Age>年龄范围:</nc.rw.crp.label.Age>
-    <nc.rw.crp.label.tooltip.Age>设置角色的年龄范围</nc.rw.crp.label.tooltip.Age>
-    <nc.rw.crp.label.Shooting>射击等级:</nc.rw.crp.label.Shooting>
-    <nc.rw.crp.label.tooltip.Shooting>设置射击等级范围</nc.rw.crp.label.tooltip.Shooting>
-    <nc.rw.crp.label.Melee>格斗等级:</nc.rw.crp.label.Melee>
-    <nc.rw.crp.label.tooltip.Melee>设置格斗等级范围</nc.rw.crp.label.tooltip.Melee>
-    <nc.rw.crp.label.Construction>建造等级:</nc.rw.crp.label.Construction>
-    <nc.rw.crp.label.tooltip.Construction>设置建造等级范围</nc.rw.crp.label.tooltip.Construction>
-    <nc.rw.crp.label.Mining>采矿等级:</nc.rw.crp.label.Mining>
-    <nc.rw.crp.label.tooltip.Mining>设置采矿等级范围</nc.rw.crp.label.tooltip.Mining>
-    <nc.rw.crp.label.Cooking>烹饪等级:</nc.rw.crp.label.Cooking>
-    <nc.rw.crp.label.tooltip.Cooking>设置烹饪等级范围</nc.rw.crp.label.tooltip.Cooking>
-    <nc.rw.crp.label.Plants>种植等级:</nc.rw.crp.label.Plants>
-    <nc.rw.crp.label.tooltip.Plants>设置种植等级范围</nc.rw.crp.label.tooltip.Plants>
-    <nc.rw.crp.label.Animals>驯兽等级:</nc.rw.crp.label.Animals>
-    <nc.rw.crp.label.tooltip.Animals>设置驯兽等级范围</nc.rw.crp.label.tooltip.Animals>
-    <nc.rw.crp.label.Crafting>手工等级:</nc.rw.crp.label.Crafting>
-    <nc.rw.crp.label.tooltip.Crafting>设置手工等级范围</nc.rw.crp.label.tooltip.Crafting>
-    <nc.rw.crp.label.Artistic>艺术等级:</nc.rw.crp.label.Artistic>
-    <nc.rw.crp.label.tooltip.Artistic>设置艺术等级范围</nc.rw.crp.label.tooltip.Artistic>
-    <nc.rw.crp.label.Medical>医药等级:</nc.rw.crp.label.Medical>
-    <nc.rw.crp.label.tooltip.Medical>设置医药等级范围</nc.rw.crp.label.tooltip.Medical>
-    <nc.rw.crp.label.Social>社交等级:</nc.rw.crp.label.Social>
-    <nc.rw.crp.label.tooltip.Social>设置社交等级范围</nc.rw.crp.label.tooltip.Social>
-    <nc.rw.crp.label.Intellectual>智识等级:</nc.rw.crp.label.Intellectual>
-    <nc.rw.crp.label.tooltip.Intellectual>设置智识等级范围</nc.rw.crp.label.tooltip.Intellectual>
+    <nc.rw.crp.label.Misc>misc</nc.rw.crp.label.Misc>
+    <nc.rw.crp.tooltip.Misc>Some miscellaneous configurations for initializing pawns</nc.rw.crp.tooltip.Misc>
+    <nc.rw.crp.label.MaxTimes>Maximum Times:</nc.rw.crp.label.MaxTimes>
+    <nc.rw.crp.tooltip.MaxTimes>Set the maximum number of random pawns</nc.rw.crp.tooltip.MaxTimes>
+    <nc.rw.crp.label.Gender>Gender:</nc.rw.crp.label.Gender>
+    <nc.rw.crp.tooltip.Gender>Please select the gender of the pawn</nc.rw.crp.tooltip.Gender>
+    <nc.rw.crp.label.FilterMode>Behavior pattern:</nc.rw.crp.label.FilterMode>
+    <nc.rw.crp.tooltip.FilterMode>One in a million:Use an internal mechanism for random screening\nThe chosen One:pawns are defined directly using the Settings data</nc.rw.crp.tooltip.FilterMode>
+    <nc.rw.crp.label.MatchMode>Match Mode:</nc.rw.crp.label.MatchMode>
+    <nc.rw.crp.tooltip.MatchMode>Defines how to match the selected data</nc.rw.crp.tooltip.MatchMode>
+    <nc.rw.crp.label.DisableWorkState>Disable Work State:</nc.rw.crp.label.DisableWorkState>
+    <nc.rw.crp.tooltip.DisableWorkState>Whether disabled work is allowed\nNone:Not check\nNothing:Must not exist\nExist:Must exist</nc.rw.crp.tooltip.DisableWorkState>
+    <nc.rw.crp.label.HealthState>Health State:</nc.rw.crp.label.HealthState>
+    <nc.rw.crp.tooltip.HealthState>Whether health conditions are allowed\nNone:Not check\nNothing:Must not exist\nExist:Must exist</nc.rw.crp.tooltip.HealthState>
+    <nc.rw.crp.label.RelationshipState>Relationship State:</nc.rw.crp.label.RelationshipState>
+    <nc.rw.crp.tooltip.RelationshipState>Whether relationships are allowed\nNone:Not check\nNothing:Must not exist\nExist:Must exist</nc.rw.crp.tooltip.RelationshipState>
+    <nc.rw.crp.label.Age>Age:</nc.rw.crp.label.Age>
+    <nc.rw.crp.tooltip.Age>Set the age range of the pawn</nc.rw.crp.tooltip.Age>
+    <nc.rw.crp.label.Skills>Skills</nc.rw.crp.label.Skills>
+    <nc.rw.crp.tooltip.Skills>Sets the skill level range for the character</nc.rw.crp.tooltip.Skills>
+    <nc.rw.crp.label.Shooting>Shooting:</nc.rw.crp.label.Shooting>
+    <nc.rw.crp.tooltip.Shooting>Set the Shooting range</nc.rw.crp.tooltip.Shooting>
+    <nc.rw.crp.label.Melee>Melee:</nc.rw.crp.label.Melee>
+    <nc.rw.crp.tooltip.Melee>Set the Melee level range</nc.rw.crp.tooltip.Melee>
+    <nc.rw.crp.label.Construction>Construction:</nc.rw.crp.label.Construction>
+    <nc.rw.crp.tooltip.Construction>Set the Construction level range</nc.rw.crp.tooltip.Construction>
+    <nc.rw.crp.label.Mining>Mining:</nc.rw.crp.label.Mining>
+    <nc.rw.crp.tooltip.Mining>Set the Mining level range</nc.rw.crp.tooltip.Mining>
+    <nc.rw.crp.label.Cooking>Cooking:</nc.rw.crp.label.Cooking>
+    <nc.rw.crp.tooltip.Cooking>Set the Cooking level range</nc.rw.crp.tooltip.Cooking>
+    <nc.rw.crp.label.Plants>Plants:</nc.rw.crp.label.Plants>
+    <nc.rw.crp.tooltip.Plants>Set the combat level range</nc.rw.crp.tooltip.Plants>
+    <nc.rw.crp.label.Animals>Animals:</nc.rw.crp.label.Animals>
+    <nc.rw.crp.tooltip.Animals>Set the Animals trainer level range</nc.rw.crp.tooltip.Animals>
+    <nc.rw.crp.label.Crafting>Crafting:</nc.rw.crp.label.Crafting>
+    <nc.rw.crp.tooltip.Crafting>Set the Crafting level range</nc.rw.crp.tooltip.Crafting>
+    <nc.rw.crp.label.Artistic>Artistic:</nc.rw.crp.label.Artistic>
+    <nc.rw.crp.tooltip.Artistic>Set the Artistic level range</nc.rw.crp.tooltip.Artistic>
+    <nc.rw.crp.label.Medical>Medicine:</nc.rw.crp.label.Medical>
+    <nc.rw.crp.tooltip.Medical>Set the Medicine range</nc.rw.crp.tooltip.Medical>
+    <nc.rw.crp.label.Social>Social:</nc.rw.crp.label.Social>
+    <nc.rw.crp.tooltip.Social>Set the Social range</nc.rw.crp.tooltip.Social>
+    <nc.rw.crp.label.Intellectual>Intellectual:</nc.rw.crp.label.Intellectual>
+    <nc.rw.crp.tooltip.Intellectual>Set the Intellectual range</nc.rw.crp.tooltip.Intellectual>
+    <nc.rw.crp.label.ChildHoodBackstories>ChildHood Backstories</nc.rw.crp.label.ChildHoodBackstories>
+    <nc.rw.crp.tooltip.ChildHoodBackstories>Set a list of children's backstories</nc.rw.crp.tooltip.ChildHoodBackstories>
+    <nc.rw.crp.label.AdulthoodBackstories>Adulthood Backstories</nc.rw.crp.label.AdulthoodBackstories>
+    <nc.rw.crp.tooltip.AdulthoodBackstories>Set the adult backstories list</nc.rw.crp.tooltip.AdulthoodBackstories>
+    <nc.rw.crp.label.Traits>Traits</nc.rw.crp.label.Traits>
+    <nc.rw.crp.tooltip.Traits>The characteristics of the initial character, derived from the backstory</nc.rw.crp.tooltip.Traits>
+    <nc.rw.crp.label.SourceItems>Source Items</nc.rw.crp.label.SourceItems>
+    <nc.rw.crp.tooltip.SourceItems>Provide selected source entries</nc.rw.crp.tooltip.SourceItems>
+    <nc.rw.crp.label.TargetItems>TargetItems</nc.rw.crp.label.TargetItems>
+    <nc.rw.crp.tooltip.TargetItems>The target entry that has been selected</nc.rw.crp.tooltip.TargetItems>
     <!--enum-->
-    <nc.rw.crp.enum.Gender.None>不限</nc.rw.crp.enum.Gender.None>
-    <nc.rw.crp.enum.Gender.Male>男</nc.rw.crp.enum.Gender.Male>
-    <nc.rw.crp.enum.Gender.Female>女</nc.rw.crp.enum.Gender.Female>
+    <nc.rw.crp.enum.Gender>Gender</nc.rw.crp.enum.Gender>
+    <nc.rw.crp.enum.Gender.None>None</nc.rw.crp.enum.Gender.None>
+    <nc.rw.crp.enum.Gender.Male>Male</nc.rw.crp.enum.Gender.Male>
+    <nc.rw.crp.enum.Gender.Female>Female</nc.rw.crp.enum.Gender.Female>
+    <nc.rw.crp.enum.FilterMode>Behavior Mode</nc.rw.crp.enum.FilterMode>
+    <nc.rw.crp.enum.FilterMode.None>None</nc.rw.crp.enum.FilterMode.None>
+    <nc.rw.crp.enum.FilterMode.OneInMillion>One In Million</nc.rw.crp.enum.FilterMode.OneInMillion>
+    <nc.rw.crp.enum.FilterMode.ChosenOne>Chosen One</nc.rw.crp.enum.FilterMode.ChosenOne>
+    <nc.rw.crp.enum.MatchMode>Match Mode</nc.rw.crp.enum.MatchMode>
+    <nc.rw.crp.enum.MatchMode.None>None</nc.rw.crp.enum.MatchMode.None>
+    <nc.rw.crp.enum.MatchMode.Any>Any</nc.rw.crp.enum.MatchMode.Any>
+    <nc.rw.crp.enum.MatchMode.All>All</nc.rw.crp.enum.MatchMode.All>
+    <nc.rw.crp.enum.DisableWorkState>Disable Work State</nc.rw.crp.enum.DisableWorkState>
+    <nc.rw.crp.enum.DisableWorkState.Any>Any</nc.rw.crp.enum.DisableWorkState.Any>
+    <nc.rw.crp.enum.DisableWorkState.Nothing>Nothing</nc.rw.crp.enum.DisableWorkState.Nothing>
+    <nc.rw.crp.enum.DisableWorkState.Exsit>Exsit</nc.rw.crp.enum.DisableWorkState.Exsit>
+    <nc.rw.crp.enum.HealthState>Health State</nc.rw.crp.enum.HealthState>
+    <nc.rw.crp.enum.HealthState.Any>Any</nc.rw.crp.enum.HealthState.Any>
+    <nc.rw.crp.enum.HealthState.Nothing>Nothing</nc.rw.crp.enum.HealthState.Nothing>
+    <nc.rw.crp.enum.HealthState.Exsit>Exsit</nc.rw.crp.enum.HealthState.Exsit>
+    <nc.rw.crp.enum.RelationshipState>Relationship State</nc.rw.crp.enum.RelationshipState>
+    <nc.rw.crp.enum.RelationshipState.Any>Any</nc.rw.crp.enum.RelationshipState.Any>
+    <nc.rw.crp.enum.RelationshipState.Nothing>Nothing</nc.rw.crp.enum.RelationshipState.Nothing>
+    <nc.rw.crp.enum.RelationshipState.Exsit>Exsit</nc.rw.crp.enum.RelationshipState.Exsit>
 </LanguageData>

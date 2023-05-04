@@ -2,7 +2,7 @@
 using Verse;
 using Verse.Noise;
 
-namespace Nomadicooer.rimworld.crp
+namespace Nomadicooer.rimworld.prf
 {
     internal static class TranslatorExtension
     {

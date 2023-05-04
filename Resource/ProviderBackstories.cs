@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Verse;
 
-namespace Nomadicooer.rimworld.crp
+namespace Nomadicooer.rimworld.prf
 {
     public class ProviderBackstories
     {
@@ -27,7 +27,7 @@ namespace Nomadicooer.rimworld.crp
             }
         }
         public static ProviderBackstories Instance => instance ??= new ProviderBackstories();
-        public List<BackstoryDef> ChildhoodBackstories => this.childhoodBackstories;
-        public List<BackstoryDef> AdulthoodBackstories => this.adulthoodBackstories;
+        public List<BackstoryDef> ChildhoodBackstories => childhoodBackstories;
+        public List<BackstoryDef> AdulthoodBackstories => adulthoodBackstories;
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Verse;
 
-namespace Nomadicooer.rimworld.crp
+namespace Nomadicooer.rimworld.prf
 {
     public class ProviderWorkTypes
     {
@@ -12,6 +12,6 @@ namespace Nomadicooer.rimworld.crp
 
         public static ProviderWorkTypes Instance => instance ??= new ProviderWorkTypes();
 
-        public List<WorkTypeDef> Works => this.works;
+        public List<WorkTypeDef> Works => works;
     }
 }

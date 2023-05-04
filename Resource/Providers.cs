@@ -1,4 +1,4 @@
-﻿namespace Nomadicooer.rimworld.crp
+﻿namespace Nomadicooer.rimworld.prf
 {
     public class Providers
     {
@@ -9,9 +9,9 @@
         private ProviderTraits? providerTraits;
         private ProviderWorkTypes? providerWorkTypes;
         public static Providers Instance => instance ??= new Providers();
-        public ProviderBackstories ProviderBackstories => this.providerBackstories ??= ProviderBackstories.Instance;
-        public ProviderSkills ProviderSkills => this.providerSkills ??= ProviderSkills.Instance;
-        public ProviderTraits ProviderTraits => this.providerTraits ??= ProviderTraits.Instance;
-        public ProviderWorkTypes ProviderWorkTypes => this.providerWorkTypes ??= ProviderWorkTypes.Instance;
+        public ProviderBackstories ProviderBackstories => providerBackstories ??= ProviderBackstories.Instance;
+        public ProviderSkills ProviderSkills => providerSkills ??= ProviderSkills.Instance;
+        public ProviderTraits ProviderTraits => providerTraits ??= ProviderTraits.Instance;
+        public ProviderWorkTypes ProviderWorkTypes => providerWorkTypes ??= ProviderWorkTypes.Instance;
     }
 }

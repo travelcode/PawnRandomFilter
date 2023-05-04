@@ -4,10 +4,10 @@ using System;
 using UnityEngine;
 using Verse;
 
-namespace Nomadicooer.rimworld.crp
+namespace Nomadicooer.rimworld.prf
 {
     [HarmonyPatch(typeof(Page_ConfigureStartingPawns), "DoWindowContents", new Type[] { typeof(Rect) })]
-    internal class CRPButtonPatcher
+    internal class PawnRandomFilterPatcher
     {
         //这儿的__instance变量名不能更改
         [HarmonyPostfix]
@@ -32,8 +32,7 @@ namespace Nomadicooer.rimworld.crp
                 }
                 else
                 {
-                    Find.WindowStack.Add(new DialogFliterMessage());
-                    PawnFilter.Instance.Stop();
+                    PawnFilter.Instance.Stop(StopRandomReason.User);
                 }
             }
             //绘制条件设置按钮
@@ -41,6 +40,7 @@ namespace Nomadicooer.rimworld.crp
             r = Widgets.ButtonText(postion, "Settings".ButtonText(), true, true, true);
             if (r)
             {
+                //打开条件窗口的时候关闭消息窗口
                 DialogFliterMessage window = Find.WindowStack.WindowOfType<DialogFliterMessage>();
                 window?.Close();
                 Find.WindowStack.Add(new DialogSettings());

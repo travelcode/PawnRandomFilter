@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using Nomadicooer.rimworld.prf;
 using UnityEngine;
 using Verse;
 
-namespace Nomadicooer.rimworld.crp
+namespace Nomadicooer.rimworld.prf
 {
     internal class UIWidgets
     {
@@ -52,6 +53,16 @@ namespace Nomadicooer.rimworld.crp
             string editBuffer = value.ToString();
             Widgets.IntEntry(itemRect, ref value, ref editBuffer, multiplier);
             return value;
+        }
+        internal static void SaveButton()
+        {
+            Rect rect = IncrementLine();
+            float x = rect.x + (rect.width - 100) / 2;
+            Rect buttonArea = new Rect(x, rect.y, 100, rect.height);
+            if (Widgets.ButtonText(buttonArea, "Save".Translate()))
+            {
+                FilterSettings.Instance.Save();
+            }
         }
         internal static IEnum RadioButtonGroup<IEnum>(IEnum chosen) where IEnum : Enum
         {

@@ -2,20 +2,22 @@
 using System.Reflection;
 using Verse;
 
-namespace Nomadicooer.rimworld.crp
+namespace Nomadicooer.rimworld.prf
 {
     /// <summary>
     /// 模组初始化检测类
     /// </summary>
     [StaticConstructorOnStartup]
-    internal static class StartUp
+    public static class StartUp
     {
-        public static string PackageId = "Nomadicooer.Rimworld.CRP";
+  
+
         static StartUp()
         {
             Logger.Level = LoggerLevel.Trace;
-            Harmony harmony = new Harmony(PackageId);
+            Harmony harmony = new Harmony(ModPathUtility.PackageId);
             harmony.PatchAll(Assembly.GetExecutingAssembly());
+            FilterSettings.Instance.LoadSettings();
         }
     }
 }

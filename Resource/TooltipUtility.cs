@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using Verse;
 
-namespace Nomadicooer.rimworld.crp
+namespace Nomadicooer.rimworld.prf
 {
     internal static class TooltipUtility
     {

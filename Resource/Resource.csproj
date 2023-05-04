@@ -4,12 +4,12 @@
     <TargetFramework>net472</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <AssemblyName>ConditionalRandomPawns</AssemblyName>
-    <RootNamespace>Nomadicooer.rimworld.crp</RootNamespace>
+    <AssemblyName>PawnRandomFilter</AssemblyName>
+    <RootNamespace>Nomadicooer.rimworld.prf</RootNamespace>
     <BaseOutputPath>..\Common\Assemblies</BaseOutputPath>
-    <PackageId>Nomadicooer.Rimworld.CRP</PackageId>
+    <PackageId>Nomadicooer.rimworld.prf</PackageId>
     <Authors>Nomadicooer</Authors>
-    <Title>ConditionalRandomPawns</Title>
+    <Title>PawnRandomFilter</Title>
     <Description>rimworld有条件随机角色</Description>
     <OutputPath>..\Common\Assemblies</OutputPath>
     <OutDir>..\Common\Assemblies</OutDir>

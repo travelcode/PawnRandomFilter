@@ -1,6 +1,6 @@
 ﻿using Verse;
 
-namespace Nomadicooer.rimworld.crp
+namespace Nomadicooer.rimworld.prf
 {
     public static class Exstension
     {

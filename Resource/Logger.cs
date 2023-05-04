@@ -4,7 +4,7 @@ using System.Reflection;
 using System.Text;
 using Verse;
 
-namespace Nomadicooer.rimworld.crp
+namespace Nomadicooer.rimworld.prf
 {
     public static class Logger
     {
@@ -99,7 +99,7 @@ namespace Nomadicooer.rimworld.crp
         {
             if (_level > LoggerLevel.Warn) return;
             message = GetFullMessage(message, LoggerLevel.Warn, StringColor.Warn);
-            Log.WarningOnce(message,message.GetHashCode());
+            Log.WarningOnce(message, message.GetHashCode());
         }
         public static void Error(string message)
         {
@@ -111,7 +111,7 @@ namespace Nomadicooer.rimworld.crp
         {
             if (_level > LoggerLevel.Error) return;
             message = GetFullMessage(message, LoggerLevel.Error, StringColor.Error);
-            Log.ErrorOnce(message,message.GetHashCode());
+            Log.ErrorOnce(message, message.GetHashCode());
         }
         public static void Fatal(string message)
         {
@@ -123,7 +123,7 @@ namespace Nomadicooer.rimworld.crp
         {
             if (_level > LoggerLevel.Fatal) return;
             message = GetFullMessage(message, LoggerLevel.Fatal, StringColor.Fatal);
-            Log.ErrorOnce(message,message.GetHashCode());
+            Log.ErrorOnce(message, message.GetHashCode());
         }
     }
 }

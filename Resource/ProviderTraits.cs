@@ -1,7 +1,7 @@
 ﻿using RimWorld;
 using System.Collections.Generic;
 using Verse;
-namespace Nomadicooer.rimworld.crp
+namespace Nomadicooer.rimworld.prf
 {
     public class ProviderTraits
     {
@@ -17,7 +17,7 @@ namespace Nomadicooer.rimworld.crp
                 if (count <= 0)
                 {
                     TraitDegreeDataRecord item = new TraitDegreeDataRecord(traitDef);
-                    this.allTraits.Add(item);
+                    allTraits.Add(item);
                     continue;
                 }
                 for (int i = 0; i < count; i++)
@@ -29,6 +29,6 @@ namespace Nomadicooer.rimworld.crp
         }
 
         public static ProviderTraits Instance => instance ??= new ProviderTraits();
-        public List<TraitDegreeDataRecord> AllTraits => this.allTraits;
+        public List<TraitDegreeDataRecord> AllTraits => allTraits;
     }
 }

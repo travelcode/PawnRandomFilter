@@ -4,12 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using Verse;
 
-namespace Nomadicooer.rimworld.crp
+namespace Nomadicooer.rimworld.prf
 {
     public class DialogSettings : Window
     {
         //用于保存对话框滚动条的位置
         private Vector2 scrollPosition = Vector2.zero;
+        private readonly static string SaveButtonText = "Save".Translate();
+        private readonly static string RestButtonText = "Rest".Translate();
         private readonly static FilterSettings result = FilterSettings.Instance;
         private readonly ListViewSelector<BackstoryDef> childhoodBackstoriesListViewSelector;
         private readonly ListViewSelector<BackstoryDef> adulthoodBackstoriesListViewSelector;
@@ -26,7 +28,7 @@ namespace Nomadicooer.rimworld.crp
             //当其它窗口打开的时候变灰
             grayOutIfOtherDialogOpen = true;
             //设置标题
-            this.optionalTitle = "DialogSettings".Text();
+            optionalTitle = "DialogSettings".Text();
             childhoodBackstoriesListViewSelector = GetChildhoodBackstoriesListViewSelector();
             adulthoodBackstoriesListViewSelector =
                 GetAdulthoodBackSotoriesListViewSelector();
@@ -34,6 +36,8 @@ namespace Nomadicooer.rimworld.crp
         }
         public override void DoWindowContents(Rect inRect)
         {
+            CreateSaveButton(inRect);
+            CreateRestButton(inRect);
             scrollPosition = GUI.BeginScrollView(UIWidgets.ScrollViewPosition, scrollPosition, UIWidgets.ScrollViewContentPostion, false, false);
             UIWidgets.Begin();
             DrawMisc();
@@ -43,6 +47,30 @@ namespace Nomadicooer.rimworld.crp
             DrawTraits();
             GUI.EndScrollView();
             UIWidgets.End();
+        }
+
+
+        private void CreateRestButton(Rect inRect)
+        {
+            float height = inRect.height - FooterRowHeight/2-StandardMargin/2;
+            bool r = Widgets.ButtonText(new Rect((inRect.width / 4f) * 3f - CloseButSize.x / 2f, height, CloseButSize.x, CloseButSize.y), RestButtonText);
+            if (r)
+            {
+                result.Rest();
+            }
+        }
+        public override void PreClose()
+        {
+            result.Save();
+        }
+        private void CreateSaveButton(Rect inRect)
+        {
+            float height=inRect.height- FooterRowHeight/2-StandardMargin/2;
+            bool r = Widgets.ButtonText(new Rect(inRect.width / 4f - CloseButSize.x / 2f, height, CloseButSize.x, CloseButSize.y), SaveButtonText);
+            if (r)
+            {
+                result.Save();
+            }
         }
         private void DrawTraits()
         {
@@ -79,16 +107,22 @@ namespace Nomadicooer.rimworld.crp
         {
             //杂项
             UIWidgets.DrawGroupTitle("Misc");
-            //允许筛选的最大次数
-            result.MaxTimes = UIWidgets.IntField("MaxTimes", result.MaxTimes, 100);
             //筛选模式
             result.FilterMode = UIWidgets.RadioButtonGroup(result.FilterMode);
+            //允许筛选的最大次数
+            if (result.FilterMode == FilterMode.OneInMillion)
+            {
+                result.MaxTimes = UIWidgets.IntField("MaxTimes", result.MaxTimes, 100);
+            }
             //匹配模式
             result.MatchMode = UIWidgets.RadioButtonGroup(result.MatchMode);
             //性别选择
             result.Gender = UIWidgets.RadioButtonGroup(result.Gender);
             //有无禁用工作状态
-            result.DisableWorkstate = UIWidgets.RadioButtonGroup(result.DisableWorkstate);
+            if (result.FilterMode == FilterMode.OneInMillion)
+            {
+                result.DisableWorkState = UIWidgets.RadioButtonGroup(result.DisableWorkState);
+            }
             //有无健康问题
             result.HealthState = UIWidgets.RadioButtonGroup(result.HealthState);
             //有无社会关系

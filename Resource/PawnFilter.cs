@@ -3,7 +3,7 @@ using System.Collections;
 using System.Reflection;
 using Verse;
 
-namespace Nomadicooer.rimworld.crp
+namespace Nomadicooer.rimworld.prf
 {
     internal class PawnFilter
     {
@@ -11,32 +11,33 @@ namespace Nomadicooer.rimworld.crp
         private readonly FilterSettings settings = FilterSettings.Instance;
         private static PawnFilter? instance;
         private bool running = false;
+        private int totalTimes;
         private int curTimes;
         private PawnFilter()
         {
-            curTimes = settings.MaxTimes;
+            totalTimes = settings.MaxTimes;
         }
         public static PawnFilter Instance => instance ??= new PawnFilter();
 
-        public bool Running => this.running;
+        public bool Running => running;
         public void RestPawn(Page_ConfigureStartingPawns __instance)
         {
-            this.startingPage = __instance;
-            Pawn pawn = this.GetCurPawn();
-            pawn=settings.RsetPawn(pawn);
-            this.SetCurPawn(pawn);
-            this.running = false;
-            this.curTimes = 0;
+            startingPage = __instance;
+            Pawn pawn = GetCurPawn();
+            pawn = settings.RsetPawn(pawn);
+            SetCurPawn(pawn);
+            running = false;
+            totalTimes = 0;
 
         }
         public void DoFilter(Page_ConfigureStartingPawns __instance)
         {
-            if(settings.FilterMode==FilterMode.ChosenOne)
+            if (settings.FilterMode == FilterMode.ChosenOne)
             {
                 RestPawn(__instance);
                 return;
             }
-            this.startingPage = __instance;
+            startingPage = __instance;
             Initialize();
             Current.Root.StartCoroutine(FilterRandomizePawn());
         }
@@ -45,38 +46,56 @@ namespace Nomadicooer.rimworld.crp
         {
             if (!running)
             {
-                this.curTimes = settings.MaxTimes;
+                totalTimes = settings.MaxTimes;
+                curTimes = 0;
                 running = true;
             }
         }
-        public void Stop()
+        public void Stop(StopRandomReason reason)
         {
-            this.curTimes = 0;
-            Current.Root.StopCoroutine(FilterRandomizePawn());
+            Current.Root.StopCoroutine("FilterRandomizePawn");
             running = false;
+            DialogFliterMessage alert = new DialogFliterMessage
+            {
+                Text = GetResonText(reason)
+            };
+            Find.WindowStack.Add(alert);
         }
+
+        private string GetResonText(StopRandomReason reason)
+        {
+            string key = "StopRandomReason." + reason.ToString();
+            string text = key.Translate();
+            string maxTimes = settings.MaxTimes.ToString();
+            text = text.Replace("{maxTimes}", maxTimes);
+            text = text.Replace("{curTimes}", curTimes.ToString());
+            return text;
+        }
+
         private IEnumerator FilterRandomizePawn()
         {
-            for (int i = 0; i < curTimes; i++)
+            for (int i = 0; i < totalTimes; i++)
             {
-                if (!this.running)
+                curTimes = i + 1;
+                if (!running)
                 {
+                    //this.Stop(StopRandomReason.None);
                     yield break;
                 }
                 Pawn? pawn = RandomizeCurPawn();
                 if (pawn == null)
                 {
-                    this.Stop();
+                    Stop(StopRandomReason.PawnNull);
                     yield break;
                 }
                 if (MatchCondition(pawn))
                 {
-                    this.Stop();
+                    Stop(StopRandomReason.Find);
                     yield return true;
                 }
                 yield return false;
             }
-            this.Stop();
+            Stop(StopRandomReason.MaxTimes);
             yield break;
         }
         private bool MatchCondition(Pawn pawn)
@@ -87,7 +106,7 @@ namespace Nomadicooer.rimworld.crp
         {
             Pawn? curPawn = null;
             if (TutorSystem.AllowAction("RandomizePawn"))
-            {   
+            {
                 int num = 0;
                 curPawn = GetCurPawn();
                 do
@@ -105,7 +124,7 @@ namespace Nomadicooer.rimworld.crp
         private Pawn GetCurPawn()
         {
             FieldInfo curPawnFieldInfo = GetCurPawnFileldInfo();
-            return (Pawn)curPawnFieldInfo.GetValue(this.startingPage);
+            return (Pawn)curPawnFieldInfo.GetValue(startingPage);
         }
 
         private static FieldInfo GetCurPawnFileldInfo()
@@ -113,12 +132,12 @@ namespace Nomadicooer.rimworld.crp
             FieldInfo fieldInfo = typeof(Page_ConfigureStartingPawns).GetField("curPawn", BindingFlags.Instance | BindingFlags.NonPublic);
             FieldInfo curPawnFieldInfo = fieldInfo;
             return curPawnFieldInfo;
-        }
+        }   
 
         private void SetCurPawn(Pawn curPawn)
         {
             FieldInfo curPanwFiledInfo = GetCurPawnFileldInfo();
-            curPanwFiledInfo.SetValue(this.startingPage, curPawn);
+            curPanwFiledInfo.SetValue(startingPage, curPawn);
         }
 
     }

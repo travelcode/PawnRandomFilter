@@ -20,6 +20,8 @@
     <No>否</No>
     <Disable>禁用</Disable>
     <Enable>启用</Enable>
+    <Save>保存</Save>
+    <Rest>重置</Rest>
     <commonality>公因子方差</commonality>
     <conflictingTraits>冲突特性:</conflictingTraits>
     <conflictingPassions>冲突技能:</conflictingPassions>
@@ -56,6 +58,13 @@
     <Slave>奴隶</Slave>
     <Trader>商人</Trader>
     <Civil>公民</Civil>
+    <StopRandomReason>招聘结果:</StopRandomReason>
+    <StopRandomReason.None>本次边缘世界殖民者基地人才招聘,预收简历{maxTimes}份,实收简历{curTimes}份,因为长时间的996,导致招聘hr离职</StopRandomReason.None>
+    <StopRandomReason.User>本次边缘世界殖民者基地人才招聘,预收简历{maxTimes}份,实收简历{curTimes}份,因为老板看招聘进展缓慢,故停止了本次人才招聘</StopRandomReason.User>
+    <StopRandomReason.Find>本次边缘世界殖民者基地人才招聘,预收简历{maxTimes}份,实收简历{curTimes}份,招聘进度大超预期,提前招聘到了想要的人才</StopRandomReason.Find>
+    <StopRandomReason.MaxTimes>本次边缘世界殖民者基地人才招聘,预收简历{maxTimes}份,实收简历{curTimes}份,因为查看简历份数已超标,故停止了本次招聘</StopRandomReason.MaxTimes>
+    <StopRandomReason.PawnNull>本次边缘世界殖民者基地人才招聘,预收简历{maxTimes}份,实收简历{curTimes}份,之后再无人投递简历,故停止了本次招聘</StopRandomReason.PawnNull>
+
     <!-- normal-->
     <nc.rw.crp.DialogSettings>随机条件设置</nc.rw.crp.DialogSettings>
     <!-- btn-->

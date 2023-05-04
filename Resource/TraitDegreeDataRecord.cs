@@ -1,7 +1,7 @@
 ﻿using RimWorld;
 using Verse;
 
-namespace Nomadicooer.rimworld.crp
+namespace Nomadicooer.rimworld.prf
 {
     public class TraitDegreeDataRecord
     {
@@ -11,22 +11,22 @@ namespace Nomadicooer.rimworld.crp
         public TraitDegreeDataRecord(TraitDef traitDef)
         {
             this.traitDef = traitDef;
-            this.degree = 0;
+            degree = 0;
             Trait trait = new Trait(traitDef, 0, forced: true);
-            this.traitDegreeData = trait.CurrentData;
-            this.traitDegreeData.commonality = traitDef.GetGenderSpecificCommonality(Gender.Male);
+            traitDegreeData = trait.CurrentData;
+            traitDegreeData.commonality = traitDef.GetGenderSpecificCommonality(Gender.Male);
         }
         public TraitDegreeDataRecord(TraitDef traitDef, TraitDegreeData traitDegreeData)
         {
             this.traitDef = traitDef;
             this.traitDegreeData = traitDegreeData;
-            this.degree = traitDegreeData.degree;
+            degree = traitDegreeData.degree;
         }
 
-        public TraitDef TraitDef => this.traitDef;
+        public TraitDef TraitDef => traitDef;
 
-        public TraitDegreeData TraitDegreeData => this.traitDegreeData;
+        public TraitDegreeData TraitDegreeData => traitDegreeData;
 
-        public int Degree => this.degree;
+        public int Degree => degree;
     }
 }

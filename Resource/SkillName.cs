@@ -1,4 +1,4 @@
-﻿namespace Nomadicooer.rimworld.crp
+﻿namespace Nomadicooer.rimworld.prf
 {
     internal enum SkillName
     {
