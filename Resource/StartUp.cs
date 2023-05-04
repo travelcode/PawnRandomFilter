@@ -6,6 +6,7 @@ namespace Nomadicooer.rimworld.prf
 {
     /// <summary>
     /// 模组初始化检测类
+    /// 代码有点烂,但是烂代码出东西
     /// </summary>
     [StaticConstructorOnStartup]
     public static class StartUp

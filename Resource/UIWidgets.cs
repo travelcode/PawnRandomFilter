@@ -332,7 +332,17 @@ namespace Nomadicooer.rimworld.prf
             Rect itemRect = new Rect(labelRect.xMax, rect.y, itemWidth, rect.height);
             return itemRect;
         }
+        public static void ShowMessage<TWindow>(string message) where TWindow : Window
+        {
+            AlertPawnSettingsFilter<TWindow> alert = Find.WindowStack.WindowOfType<AlertPawnSettingsFilter<TWindow>>();
+            if (alert == null)
+            {
+                alert = new AlertPawnSettingsFilter<TWindow>();
+                Find.WindowStack.Add(alert);
+            }
+            alert.Text = message;
 
+        }
     }
 
 }

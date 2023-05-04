@@ -1,5 +1,4 @@
 ﻿using RimWorld;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Verse;
@@ -26,7 +25,7 @@ namespace Nomadicooer.rimworld.prf
             //设置点击窗体外关闭,不然会发生重绘现象
             closeOnClickedOutside = true;
             //当其它窗口打开的时候变灰
-            grayOutIfOtherDialogOpen = true;
+            grayOutIfOtherDialogOpen = false;
             //设置标题
             optionalTitle = "DialogSettings".Text();
             childhoodBackstoriesListViewSelector = GetChildhoodBackstoriesListViewSelector();
@@ -48,8 +47,6 @@ namespace Nomadicooer.rimworld.prf
             GUI.EndScrollView();
             UIWidgets.End();
         }
-
-
         private static void CreateRestButton(Rect inRect)
         {
             float height = inRect.height - FooterRowHeight/2-StandardMargin/2;
@@ -57,11 +54,8 @@ namespace Nomadicooer.rimworld.prf
             if (r)
             {
                 result.Rest();
+                result.Save();
             }
-        }
-        public override void PreClose()
-        {
-            result.Save();
         }
         private static void CreateSaveButton(Rect inRect)
         {
@@ -70,6 +64,7 @@ namespace Nomadicooer.rimworld.prf
             if (r)
             {
                 result.Save();
+                UIWidgets.ShowMessage<DialogSettings>("SaveSucceed".Translate());
             }
         }
         private void DrawTraits()

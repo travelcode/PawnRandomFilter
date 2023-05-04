@@ -1,14 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
 <LanguageData>
+    <SaveSucceed>Save Succeed</SaveSucceed>
+    <warn.maxRange>Warning: It's hard to pick out pawn above level 15 in One in million mode</warn.maxRange>
+    <warn.backstoryHasDisableWorktype>Warning :{backsotry} contains disabled work types</warn.backstoryHasDisableWorktype>
+    <warn.TraitHasDisableWorkType>Warning :{trait} contains a disabled work type that conflicts with the matching mode</warn.TraitHasDisableWorkType>
+
     <None>None</None>
     <Nomadicooer>Nomadicooer</Nomadicooer>
     <SpawnCategories>Spawn Categories:</SpawnCategories>
-    <SkillGains>Skill Gains:</SkillGains>
     <DisableWorks>Disable Works:</DisableWorks>
     <DisabledWorkGivers>Disabled Work Givers:</DisabledWorkGivers>
     <DisallowedTraits>Disallowed Traits:</DisallowedTraits>
     <ForcedTraits>Forced Traits:</ForcedTraits>
+    <forcedTraits>forced Traits</forcedTraits>
     <Shuffleable>Shuffleable:</Shuffleable>
     <Possessions>Possessions:</Possessions>
     <IsPlayerColonyChildBackstory>Is Player Colony Child Backstory:</IsPlayerColonyChildBackstory>

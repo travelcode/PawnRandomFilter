@@ -2,7 +2,7 @@
 <settings>
   <misc>
     <filterMode>OneInMillion</filterMode>
-    <maxTimes>1000</maxTimes>
+    <maxTimes>28000</maxTimes>
     <matchMode>Any</matchMode>
     <gender>None</gender>
     <disableWorkState>Nothing</disableWorkState>
@@ -63,7 +63,12 @@
       <max>20</max>
     </intellectualRange>
   </skills>
-  <childHoodBackstories />
+  <childHoodBackstories>
+    <defName>SpaceSmuggler6</defName>
+    <defName>MedievalSlave49</defName>
+    <defName>RoyalBastard64</defName>
+    <defName>CommonerHeir5</defName>
+  </childHoodBackstories>
   <adulthoodBackstories />
   <traits />
 </settings>

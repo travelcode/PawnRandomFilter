@@ -1,6 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
 <LanguageData>
+    <!--2023年5月5日-->
+    <SaveSucceed>保存成功</SaveSucceed>
+    <warn.maxRange>警告:万里挑一模式下很难筛选出技能等级大于15级的小人出来</warn.maxRange>
+    <warn.backstoryHasDisableWorktype>警告:{backstory}包含禁用工作类型,与匹配模式不能包含禁用工作类型冲突</warn.backstoryHasDisableWorktype>
+    <warn.TraitHasDisableWorkType>警告:{trait}包含禁用的工作类型,与匹配模式不能包含禁用工作类型冲突</warn.TraitHasDisableWorkType>
+    <!--2023年5月5日之前-->
     <None>无</None>
     <Nomadicooer>流离禽鸟</Nomadicooer>
     <SpawnCategories>角色类别:</SpawnCategories>
@@ -9,6 +15,7 @@
     <DisabledWorkGivers>无法从事:</DisabledWorkGivers>
     <DisallowedTraits>禁用特性:</DisallowedTraits>
     <ForcedTraits>强制特性:</ForcedTraits>
+    <forcedTraits>强制特性</forcedTraits>
     <Shuffleable>随机洗牌:</Shuffleable>
     <Possessions>携带物品:</Possessions>
     <IsPlayerColonyChildBackstory>殖民孩童:</IsPlayerColonyChildBackstory>
@@ -66,7 +73,7 @@
     <StopRandomReason.PawnNull>本次边缘世界殖民者基地人才招聘,预收简历{maxTimes}份,实收简历{curTimes}份,之后再无人投递简历,故停止了本次招聘</StopRandomReason.PawnNull>
 
     <!-- normal-->
-    <nc.rw.crp.DialogSettings>随机条件设置</nc.rw.crp.DialogSettings>
+    <nc.rw.crp.DialogSettings>随机筛选器</nc.rw.crp.DialogSettings>
     <!-- btn-->
     <nc.rw.crp.btn.StartFilter>开始筛选</nc.rw.crp.btn.StartFilter>
     <nc.rw.crp.btn.EndFilter>结束筛选</nc.rw.crp.btn.EndFilter>

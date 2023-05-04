@@ -65,21 +65,177 @@ namespace Nomadicooer.rimworld.prf
         public int MaxTimes { get => maxTimes; set => maxTimes = value; }
         public Gender Gender { get => gender; set => gender = value; }
         public IntRange AgeRange { get => ageRange; set => ageRange = value; }
-        public IntRange ShootingRange { get => shootingRange; set => shootingRange = value; }
-        public IntRange MeleeRange { get => meleeRange; set => meleeRange = value; }
-        public IntRange ConstructionRange { get => constructionRange; set => constructionRange = value; }
-        public IntRange MiningRange { get => miningRange; set => miningRange = value; }
-        public IntRange CookingRange { get => cookingRange; set => cookingRange = value; }
-        public IntRange PlantsRange { get => plantsRange; set => plantsRange = value; }
-        public IntRange AnimalsRange { get => animalsRange; set => animalsRange = value; }
-        public IntRange CraftingRange { get => craftingRange; set => craftingRange = value; }
-        public IntRange ArtisticRange { get => artisticRange; set => artisticRange = value; }
-        public IntRange MedicalRange { get => medicalRange; set => medicalRange = value; }
-        public IntRange SocialRange { get => socialRange; set => socialRange = value; }
-        public IntRange IntellectualRange { get => intellectualRange; set => intellectualRange = value; }
-        public List<BackstoryDef> ChildHoodBackstories { get => childHoodBackstories; set => childHoodBackstories = value; }
-        public List<BackstoryDef> AdulthoodBackstories { get => adulthoodBackstories; set => adulthoodBackstories = value; }
-        public List<TraitDegreeDataRecord> Traits { get => traits; set => traits = value; }
+        public IntRange ShootingRange
+        {
+            get => shootingRange;
+            set
+            {
+                CheckSkill(value);
+                shootingRange = value;
+            }
+        }
+
+        public IntRange MeleeRange
+        {
+            get => meleeRange; set
+            {
+                CheckSkill(value);
+                meleeRange = value;
+            }
+        }
+        public IntRange ConstructionRange
+        {
+            get => constructionRange; set
+            {
+                CheckSkill(value);
+                constructionRange = value;
+            }
+        }
+        public IntRange MiningRange
+        {
+            get => miningRange; set
+            {
+                CheckSkill(value);
+                miningRange = value;
+            }
+        }
+        public IntRange CookingRange
+        {
+            get => cookingRange; set
+            {
+                CheckSkill(value);
+                cookingRange = value;
+            }
+        }
+        public IntRange PlantsRange
+        {
+            get => plantsRange; set
+            {
+                CheckSkill(value);
+                plantsRange = value;
+            }
+        }
+        public IntRange AnimalsRange
+        {
+            get => animalsRange; set
+            {
+                CheckSkill(value);
+                animalsRange = value;
+            }
+        }
+        public IntRange CraftingRange
+        {
+            get => craftingRange; set
+            {
+                CheckSkill(value);
+                craftingRange = value;
+            }
+        }
+        public IntRange ArtisticRange
+        {
+            get => artisticRange; set
+            {
+                CheckSkill(value);
+                artisticRange = value;
+            }
+        }
+        public IntRange MedicalRange
+        {
+            get => medicalRange; set
+            {
+                CheckSkill(value);
+                medicalRange = value;
+            }
+        }
+        public IntRange SocialRange
+        {
+            get => socialRange; set
+            {
+                CheckSkill(value);
+                socialRange = value;
+            }
+        }
+        public IntRange IntellectualRange
+        {
+            get => intellectualRange; set
+            {
+                CheckSkill(value);
+                intellectualRange = value;
+            }
+        }
+        public List<BackstoryDef> ChildHoodBackstories
+        {
+            get => childHoodBackstories; set
+            {
+                CheckBackstories(value);
+                childHoodBackstories = value;
+            }
+        }
+
+        private void CheckBackstories(List<BackstoryDef> value)
+        {
+            List<BackstoryDef> backstories = value;
+            if (filterMode != FilterMode.OneInMillion)
+            {
+                return;
+            }
+            if (disableWorkState != DisableWorkState.Nothing)
+            {
+                return;
+            }
+            foreach (var backstory in backstories)
+            {
+                if (backstory.DisabledWorkTypes.Count <= 0)
+                {
+                    continue;
+                }
+                string text = "warn.backstoryHasDisableWorktype".Translate();
+                text = text.Replace("{backstory}", backstory.title);
+                text = StringColor.OrangeRed.GetColorMessage(text);
+                UIWidgets.ShowMessage<DialogSettings>(text);
+            }
+        }
+
+        public List<BackstoryDef> AdulthoodBackstories
+        {
+            get => adulthoodBackstories; set
+            {
+                CheckBackstories(value);
+                adulthoodBackstories = value;
+            }
+        }
+        public List<TraitDegreeDataRecord> Traits
+        {
+            get => traits; set
+            {
+                CheckTraits(value);
+                traits = value;
+            }
+        }
+
+        private  void CheckTraits(List<TraitDegreeDataRecord> value)
+        {
+            if (filterMode != FilterMode.OneInMillion)
+            {
+                return;
+            }
+            if (disableWorkState != DisableWorkState.Nothing)
+            {
+                return;
+            }
+            foreach (var tddr in value)
+            {
+                if (tddr.TraitDef.disabledWorkTypes.Count <= 0)
+                {
+                    continue;
+                }
+                string text = "warn.TraitHasDisableWorkType".Translate();
+                text = text.Replace("{trait}", tddr.TraitDef.label.Translate());
+                text = StringColor.OrangeRed.GetColorMessage(text);
+                UIWidgets.ShowMessage<DialogSettings>(text);
+            }
+        }
+
         public MatchMode MatchMode { get => matchMode; set => matchMode = value; }
         public FilterMode FilterMode { get => filterMode; set => filterMode = value; }
         internal DisableWorkState DisableWorkState { get => disableWorkState; set => disableWorkState = value; }
@@ -672,7 +828,18 @@ namespace Nomadicooer.rimworld.prf
             range.min = min;
             range.max = max;
         }
-
+        private void CheckSkill(IntRange intRange)
+        {
+            if (filterMode != FilterMode.OneInMillion)
+            {
+                return;
+            }
+            if (intRange.min >= 15)
+            {
+                string text = StringColor.OrangeRed.GetColorMessage("warn.maxRange".Translate());
+                UIWidgets.ShowMessage<DialogSettings>(text);
+            }
+        }
         internal void Rest()
         {
             //最大随机次数
