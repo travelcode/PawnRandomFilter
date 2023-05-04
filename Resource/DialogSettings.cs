@@ -50,7 +50,7 @@ namespace Nomadicooer.rimworld.prf
         }
 
 
-        private void CreateRestButton(Rect inRect)
+        private static void CreateRestButton(Rect inRect)
         {
             float height = inRect.height - FooterRowHeight/2-StandardMargin/2;
             bool r = Widgets.ButtonText(new Rect((inRect.width / 4f) * 3f - CloseButSize.x / 2f, height, CloseButSize.x, CloseButSize.y), RestButtonText);
@@ -63,7 +63,7 @@ namespace Nomadicooer.rimworld.prf
         {
             result.Save();
         }
-        private void CreateSaveButton(Rect inRect)
+        private static void CreateSaveButton(Rect inRect)
         {
             float height=inRect.height- FooterRowHeight/2-StandardMargin/2;
             bool r = Widgets.ButtonText(new Rect(inRect.width / 4f - CloseButSize.x / 2f, height, CloseButSize.x, CloseButSize.y), SaveButtonText);
