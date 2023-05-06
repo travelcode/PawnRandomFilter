@@ -1,6 +1,7 @@
 ﻿using RimWorld;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 using Verse;
 
 namespace Nomadicooer.rimworld.prf
@@ -53,7 +54,7 @@ namespace Nomadicooer.rimworld.prf
             bool r = Widgets.ButtonText(new Rect((inRect.width / 4f) * 3f - CloseButSize.x / 2f, height, CloseButSize.x, CloseButSize.y), RestButtonText);
             if (r)
             {
-                result.Rest();
+                result.RestSettings();
                 result.Save();
             }
         }
@@ -85,19 +86,69 @@ namespace Nomadicooer.rimworld.prf
         private static void DrawSkills()
         {
             UIWidgets.DrawGroupTitle("Skills");
-            result.ShootingRange = UIWidgets.IntRangeSlider("Shooting", result.ShootingRange, 0, 20);
-            result.MeleeRange = UIWidgets.IntRangeSlider("Melee", result.MeleeRange, 0, 20);
-            result.ConstructionRange = UIWidgets.IntRangeSlider("Construction", result.ConstructionRange, 0, 20);
-            result.MiningRange = UIWidgets.IntRangeSlider("Mining", result.MiningRange, 0, 20);
-            result.CookingRange = UIWidgets.IntRangeSlider("Cooking", result.CookingRange, 0, 20);
-            result.PlantsRange = UIWidgets.IntRangeSlider("Plants", result.PlantsRange, 0, 20);
-            result.AnimalsRange = UIWidgets.IntRangeSlider("Animals", result.AnimalsRange, 0, 20);
-            result.CraftingRange = UIWidgets.IntRangeSlider("Crafting", result.CraftingRange, 0, 20);
-            result.ArtisticRange = UIWidgets.IntRangeSlider("Artistic", result.ArtisticRange, 0, 20);
-            result.MedicalRange = UIWidgets.IntRangeSlider("Medical", result.MedicalRange, 0, 20);
-            result.SocialRange = UIWidgets.IntRangeSlider("Social", result.SocialRange, 0, 20);
-            result.IntellectualRange = UIWidgets.IntRangeSlider("Intellectual", result.IntellectualRange, 0, 20);
+           // result.ShootingRange = UIWidgets.IntRangeSlider("Shooting", result.ShootingRange, 0, 20);
+            SkillInfo skillInfo = new SkillInfo(result.ShootingRange, result.ShootingPassion);
+            skillInfo = UIWidgets.SkillIntRangeSlider("Shooting", skillInfo);
+            result.ShootingRange = skillInfo.intRange;
+            result.ShootingPassion = skillInfo.passion;
+            //result.MeleeRange = UIWidgets.IntRangeSlider("Melee", result.MeleeRange, 0, 20);
+            skillInfo = new SkillInfo(result.MeleeRange, result.MeleePassion);
+            skillInfo = UIWidgets.SkillIntRangeSlider("Melee", skillInfo);
+            result.MeleeRange = skillInfo.intRange;
+            result.MeleePassion = skillInfo.passion;
+            //result.ConstructionRange = UIWidgets.IntRangeSlider("Construction", result.ConstructionRange, 0, 20);
+            skillInfo = new SkillInfo(result.ConstructionRange, result.ConstructionPassion);
+            skillInfo = UIWidgets.SkillIntRangeSlider("Construction", skillInfo);
+            result.ConstructionRange = skillInfo.intRange;
+            result.ConstructionPassion = skillInfo.passion;
+            //result.MiningRange = UIWidgets.IntRangeSlider("Mining", result.MiningRange, 0, 20);
+            skillInfo = new SkillInfo(result.MiningRange, result.MiningPassion);
+            skillInfo = UIWidgets.SkillIntRangeSlider("Mining", skillInfo);
+            result.MiningRange = skillInfo.intRange;
+            result.MiningPassion = skillInfo.passion;
+            //result.CookingRange = UIWidgets.IntRangeSlider("Cooking", result.CookingRange, 0, 20);
+            skillInfo = new SkillInfo(result.CookingRange, result.CookingPassion);
+            skillInfo = UIWidgets.SkillIntRangeSlider("Cooking", skillInfo);
+            result.CookingRange = skillInfo.intRange;
+            result.CookingPassion = skillInfo.passion;
+            //result.PlantsRange = UIWidgets.IntRangeSlider("Plants", result.PlantsRange, 0, 20);
+            skillInfo = new SkillInfo(result.PlantsRange, result.PlantsPassion);
+            skillInfo = UIWidgets.SkillIntRangeSlider("Plants", skillInfo);
+            result.PlantsRange = skillInfo.intRange;
+            result.PlantsPassion = skillInfo.passion;
+            //result.AnimalsRange = UIWidgets.IntRangeSlider("Animals", result.AnimalsRange, 0, 20);
+            skillInfo = new SkillInfo(result.AnimalsRange, result.AnimalsPassion);
+            skillInfo = UIWidgets.SkillIntRangeSlider("Animals", skillInfo);
+            result.AnimalsRange = skillInfo.intRange;
+            result.AnimalsPassion = skillInfo.passion;
+            //result.CraftingRange = UIWidgets.IntRangeSlider("Crafting", result.CraftingRange, 0, 20);
+            skillInfo = new SkillInfo(result.CraftingRange, result.CraftingPassion);
+            skillInfo = UIWidgets.SkillIntRangeSlider("Crafting", skillInfo);
+            result.CraftingRange = skillInfo.intRange;
+            result.CraftingPassion = skillInfo.passion;
+            //result.ArtisticRange = UIWidgets.IntRangeSlider("Artistic", result.ArtisticRange, 0, 20);
+            skillInfo = new SkillInfo(result.ArtisticRange, result.ArtisticPassion);
+            skillInfo = UIWidgets.SkillIntRangeSlider("Artistic", skillInfo);
+            result.ArtisticRange = skillInfo.intRange;
+            result.ArtisticPassion = skillInfo.passion;
+            //result.MedicalRange = UIWidgets.IntRangeSlider("Medical", result.MedicalRange, 0, 20);
+            skillInfo = new SkillInfo(result.MedicalRange, result.MedicalPassion);
+            skillInfo = UIWidgets.SkillIntRangeSlider("Medical", skillInfo);
+            result.MedicalRange = skillInfo.intRange;
+            result.MedicalPassion = skillInfo.passion;
+            //result.SocialRange = UIWidgets.IntRangeSlider("Social", result.SocialRange, 0, 20);
+            skillInfo = new SkillInfo(result.SocialRange, result.SocialPassion);
+            skillInfo = UIWidgets.SkillIntRangeSlider("Social", skillInfo);
+            result.SocialRange = skillInfo.intRange;
+            result.SocialPassion = skillInfo.passion;
+            //result.IntellectualRange = UIWidgets.IntRangeSlider("Intellectual", result.IntellectualRange, 0, 20);
+            skillInfo = new SkillInfo(result.IntellectualRange, result.IntellectualPassion);
+            skillInfo = UIWidgets.SkillIntRangeSlider("Intellectual", skillInfo);
+            result.IntellectualRange = skillInfo.intRange;
+            result.IntellectualPassion = skillInfo.passion;
+
         }
+
         private static void DrawMisc()
         {
             //杂项

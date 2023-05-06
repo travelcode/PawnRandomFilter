@@ -47,6 +47,7 @@
     更改mod依赖,该mod必须依赖Harmony
     更改筛选结果滚动提示,让提示显示更完整
     在筛选条件添加了一些设置内容检测,并弹出警告消息,但是不会影响继续设置
+    添加技能热情相关
   </description>
   <loadAfter>
     <li>net.pardeike.rimworld.mod.harmony</li>

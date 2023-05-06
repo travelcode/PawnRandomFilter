@@ -34,28 +34,40 @@ namespace Nomadicooer.rimworld.prf
         private IntRange ageRange = new IntRange(0, 100);
         //射击等级
         private IntRange shootingRange = new IntRange(0, 20);
+        private Passion shootingPassion = Passion.None;
         //格斗等级
         private IntRange meleeRange = new IntRange(0, 20);
+        private Passion meleePassion = Passion.None;
         //建造等级
         private IntRange constructionRange = new IntRange(0, 20);
+        private Passion constructionPassion = Passion.None;
         //采矿等级
         private IntRange miningRange = new IntRange(0, 20);
+        private Passion miningPassion = Passion.None;
         //烹饪等级
         private IntRange cookingRange = new IntRange(0, 20);
+        private Passion cookingPassion = Passion.None;
         //种植等级
         private IntRange plantsRange = new IntRange(0, 20);
+        private Passion plantsPassion = Passion.None;
         //驯兽等级
         private IntRange animalsRange = new IntRange(0, 20);
+        private Passion animalsPassion = Passion.None;
         //手工等级
         private IntRange craftingRange = new IntRange(0, 20);
+        private Passion craftingPassion = Passion.None;
         //艺术等级
         private IntRange artisticRange = new IntRange(0, 20);
+        private Passion artisticPassion = Passion.None;
         //医疗等级
         private IntRange medicalRange = new IntRange(0, 20);
-        //射击等级
+        private Passion medicalPassion = Passion.None;
+        //社交等级
         private IntRange socialRange = new IntRange(0, 20);
+        private Passion socialPassion = Passion.None;
         //智识等级
         private IntRange intellectualRange = new IntRange(0, 20);
+        private Passion intellectualPassion = Passion.None;
         //幼年背景故事
         private List<BackstoryDef> childHoodBackstories = new List<BackstoryDef>();
         //成年背景故事
@@ -213,7 +225,7 @@ namespace Nomadicooer.rimworld.prf
             }
         }
 
-        private  void CheckTraits(List<TraitDegreeDataRecord> value)
+        private void CheckTraits(List<TraitDegreeDataRecord> value)
         {
             if (filterMode != FilterMode.OneInMillion)
             {
@@ -241,6 +253,19 @@ namespace Nomadicooer.rimworld.prf
         internal DisableWorkState DisableWorkState { get => disableWorkState; set => disableWorkState = value; }
         public HealthState HealthState { get => healthState; set => healthState = value; }
         public RelationshipState RelationshipState { get => relationshipState; set => relationshipState = value; }
+        public Passion ShootingPassion { get => this.shootingPassion; set => this.shootingPassion = value; }
+        public Passion MeleePassion { get => this.meleePassion; set => this.meleePassion = value; }
+        public Passion ConstructionPassion { get => this.constructionPassion; set => this.constructionPassion = value; }
+        public Passion MiningPassion { get => this.miningPassion; set => this.miningPassion = value; }
+        public Passion CookingPassion { get => this.cookingPassion; set => this.cookingPassion = value; }
+        public Passion PlantsPassion { get => this.plantsPassion; set => this.plantsPassion = value; }
+        public Passion AnimalsPassion { get => this.animalsPassion; set => this.animalsPassion = value; }
+        public Passion CraftingPassion { get => this.craftingPassion; set => this.craftingPassion = value; }
+        public Passion ArtisticPassion { get => this.artisticPassion; set => this.artisticPassion = value; }
+        public Passion MedicalPassion { get => this.medicalPassion; set => this.medicalPassion = value; }
+        public Passion SocialPassion { get => this.socialPassion; set => this.socialPassion = value; }
+        public Passion IntellectualPassion { get => this.intellectualPassion; set => this.intellectualPassion = value; }
+
         public Pawn RsetPawn(Pawn pawn)
         {
             RestBackstory(pawn);
@@ -328,20 +353,24 @@ namespace Nomadicooer.rimworld.prf
             }
             TraitSet traitSet = pawn.story.traits;
             List<TraitDegreeDataRecord> traitsSetting = traits;
-            foreach (var item in traitsSetting)
-            {
-                if (traitSet.HasTrait(item.TraitDef))
-                {
-                    return;
-                }
+            if (traitsSetting == null || traitsSetting.Count <= 0) {
+                return;
             }
-            if (traitSet.allTraits.Count > 0)
+            int initCount = 0;
+            if (traitSet.allTraits != null)
             {
-                traitSet.allTraits.RemoveLast();
+                initCount = traitSet.allTraits.Count;
             }
-            int index = random.Next(traitsSetting.Count);
-            TraitDegreeDataRecord record = traitsSetting[index];
-            traitSet.GainTrait(new Trait(record.TraitDef, record.Degree, true), true);
+            if (traitSet.allTraits != null && traitSet.allTraits.Count > 0)
+            {
+                traitSet.allTraits.RemoveAt(random.Next(traitSet.allTraits.Count));
+            }
+            do {
+                int index = random.Next(traitsSetting.Count);
+                TraitDegreeDataRecord record = traitsSetting[index];
+                traitSet.GainTrait(new Trait(record.TraitDef, record.Degree, false), false);
+            } while (traitSet.allTraits==null||traitSet.allTraits.Count<initCount);
+
         }
         private void RsetSkills(Pawn pawn)
         {
@@ -356,67 +385,73 @@ namespace Nomadicooer.rimworld.prf
                 string skillName = skillRecord.def.defName;
                 if (skillName == SkillName.Shooting.ToString())
                 {
-                    SetSkill(skillRecord, level, shootingRange);
+                    SetSkill(skillRecord, shootingRange);
+                    skillRecord.passion = this.shootingPassion;
                 }
                 else if (skillName == SkillName.Melee.ToString())
                 {
-                    SetSkill(skillRecord, level, MedicalRange);
+                    SetSkill(skillRecord, MedicalRange);
+                    skillRecord.passion = this.medicalPassion;
                 }
                 else if (skillName == SkillName.Construction.ToString())
                 {
-                    SetSkill(skillRecord, level, constructionRange);
+                    SetSkill(skillRecord, constructionRange);
+                    skillRecord.passion = this.constructionPassion;
                 }
                 else if (skillName == SkillName.Mining.ToString())
                 {
-                    SetSkill(skillRecord, level, MiningRange);
+                    SetSkill(skillRecord, MiningRange);
+                    skillRecord.passion = this.miningPassion;
                 }
                 else if (skillName == SkillName.Cooking.ToString())
                 {
-                    SetSkill(skillRecord, level, CookingRange);
+                    SetSkill(skillRecord, CookingRange);
+                    skillRecord.passion = this.cookingPassion;
                 }
                 else if (skillName == SkillName.Plants.ToString())
                 {
-                    SetSkill(skillRecord, level, PlantsRange);
+                    SetSkill(skillRecord, PlantsRange);
+                    skillRecord.passion = this.plantsPassion;
                 }
                 else if (skillName == SkillName.Animals.ToString())
                 {
-                    SetSkill(skillRecord, level, AnimalsRange);
+                    SetSkill(skillRecord, AnimalsRange);
+                    skillRecord.passion = this.animalsPassion;
                 }
                 else if (skillName == SkillName.Crafting.ToString())
                 {
-                    SetSkill(skillRecord, level, CraftingRange);
+                    SetSkill(skillRecord, CraftingRange);
+                    skillRecord.passion = this.craftingPassion;
                 }
                 else if (skillName == SkillName.Artistic.ToString())
                 {
-                    SetSkill(skillRecord, level, ArtisticRange);
+                    SetSkill(skillRecord, ArtisticRange);
+                    skillRecord.passion = this.artisticPassion;
                 }
                 else if (skillName == SkillName.Medicine.ToString())
                 {
-                    SetSkill(skillRecord, level, MedicalRange);
+                    SetSkill(skillRecord, MedicalRange);
+                    skillRecord.passion = this.medicalPassion;
                 }
                 else if (skillName == SkillName.Social.ToString())
                 {
-                    SetSkill(skillRecord, level, SocialRange);
+                    SetSkill(skillRecord, SocialRange);
+                    skillRecord.passion = this.socialPassion;
                 }
                 else if (skillName == SkillName.Intellectual.ToString())
                 {
-                    SetSkill(skillRecord, level, IntellectualRange);
+                    SetSkill(skillRecord, IntellectualRange);
+                    skillRecord.passion = this.intellectualPassion;
                 }
 
             }
         }
-        private void SetSkill(SkillRecord skillRecord, int level, IntRange range)
+        private void SetSkill(SkillRecord skillRecord, IntRange range)
         {
-            if (!range.InRange(level))
-            {
-                skillRecord.Level = random.Next(range.min, range.max);
-            }
+            skillRecord.Level = random.Next(range.min, range.max);
         }
         private void RsetAge(Pawn pawn)
         {
-            int age = pawn.ageTracker.AgeBiologicalYears;
-            bool r = ageRange.InRange(age);
-            if (r) return;
             int ageYear = random.Next(ageRange.min, ageRange.max);
             pawn.ageTracker.AgeBiologicalTicks = ageYear * 3600000;
         }
@@ -541,9 +576,70 @@ namespace Nomadicooer.rimworld.prf
                 {
                     return false;
                 }
-
+                Passion passion = skill.passion;
+                if (!IsRightSkillPassion(passion, skillName))
+                {
+                    return false;
+                }
             }
             return true;
+        }
+        private bool IsRightSkillPassion(Passion passion, string skillName)
+        {
+            bool r;
+            if (skillName == SkillName.Shooting.ToString())
+            {
+                r = passion >= shootingPassion;
+            }
+            else if (skillName == SkillName.Melee.ToString())
+            {
+                r = passion >= meleePassion;
+            }
+            else if (skillName == SkillName.Construction.ToString())
+            {
+                r = passion >= constructionPassion;
+            }
+            else if (skillName == SkillName.Mining.ToString())
+            {
+                r = passion >= miningPassion;
+            }
+            else if (skillName == SkillName.Cooking.ToString())
+            {
+                r = passion >= cookingPassion;
+            }
+            else if (skillName == SkillName.Plants.ToString())
+            {
+                r = passion >= plantsPassion;
+            }
+            else if (skillName == SkillName.Animals.ToString())
+            {
+                r = passion >= animalsPassion;
+            }
+            else if (skillName == SkillName.Crafting.ToString())
+            {
+                r = passion >= craftingPassion;
+            }
+            else if (skillName == SkillName.Artistic.ToString())
+            {
+                r = passion >= artisticPassion;
+            }
+            else if (skillName == SkillName.Medicine.ToString())
+            {
+                r = passion >= medicalPassion;
+            }
+            else if (skillName == SkillName.Social.ToString())
+            {
+                r = passion >= socialPassion;
+            }
+            else if (skillName == SkillName.Intellectual.ToString())
+            {
+                r = passion >= intellectualPassion;
+            }
+            else
+            {
+                r = false;
+            }
+            return r;
         }
         private bool IsSkillInRange(int level, string skillName)
         {
@@ -662,17 +758,29 @@ namespace Nomadicooer.rimworld.prf
         {
             XmlElement skills = doc.CreateElement("skills");
             CreateRangeElement(doc, skills, "shootingRange", this.shootingRange);
+            CreateChildElement(doc, skills, "shootingPassion", this.shootingPassion);
             CreateRangeElement(doc, skills, "meleeRange", this.meleeRange);
+            CreateChildElement(doc, skills, "meleePassion", this.meleePassion);
             CreateRangeElement(doc, skills, "constructionRange", this.constructionRange);
+            CreateChildElement(doc, skills, "constructionPassion", this.constructionPassion);
             CreateRangeElement(doc, skills, "miningRange", this.miningRange);
+            CreateChildElement(doc, skills, "miningPassion", this.miningPassion);
             CreateRangeElement(doc, skills, "cookingRange", this.cookingRange);
+            CreateChildElement(doc, skills, "cookingPassion", this.cookingPassion);
             CreateRangeElement(doc, skills, "plantsRange", this.plantsRange);
+            CreateChildElement(doc, skills, "plantsPassion", this.plantsPassion);
             CreateRangeElement(doc, skills, "animalsRange", this.animalsRange);
+            CreateChildElement(doc, skills, "animalsPassion", this.animalsPassion);
             CreateRangeElement(doc, skills, "craftingRange", this.craftingRange);
+            CreateChildElement(doc, skills, "craftingPassion", this.craftingPassion);
             CreateRangeElement(doc, skills, "artisticRange", this.artisticRange);
+            CreateChildElement(doc, skills, "artisticPassion", this.artisticPassion);
             CreateRangeElement(doc, skills, "medicalRange", this.medicalRange);
+            CreateChildElement(doc, skills, "medicalPassion", this.medicalPassion);
             CreateRangeElement(doc, skills, "socialRange", this.socialRange);
+            CreateChildElement(doc, skills, "socialPassion", this.socialPassion);
             CreateRangeElement(doc, skills, "intellectualRange", this.intellectualRange);
+            CreateChildElement(doc, skills, "intellectualPassion", this.intellectualPassion);
             root.AppendChild(skills);
         }
 
@@ -703,14 +811,13 @@ namespace Nomadicooer.rimworld.prf
             doc.AppendChild(xd);
             return doc;
         }
-        private static void CreateRangeElement(XmlDocument doc, XmlElement misc, string rangeName, IntRange range)
+        private static void CreateRangeElement(XmlDocument doc, XmlElement parent, string rangeName, IntRange range)
         {
             XmlElement rangeElement = doc.CreateElement(rangeName);
             CreateChildElement(doc, rangeElement, "min", range.min);
             CreateChildElement(doc, rangeElement, "max", range.max);
-            misc.AppendChild(rangeElement);
+            parent.AppendChild(rangeElement);
         }
-
         private static void CreateChildElement(XmlDocument doc, XmlElement parent, string name, object data)
         {
             XmlElement ele = doc.CreateElement(name);
@@ -782,16 +889,29 @@ namespace Nomadicooer.rimworld.prf
         {
             XmlNode skillsNode = root.SelectSingleNode("skills");
             ParseRange(skillsNode, "shootingRange", ref this.shootingRange);
+            ParsePassion(skillsNode, "shootingPassion", ref this.shootingPassion);
             ParseRange(skillsNode, "meleeRange", ref this.meleeRange);
+            ParsePassion(skillsNode, "meleePassion", ref this.meleePassion);
             ParseRange(skillsNode, "constructionRange   ", ref this.constructionRange);
+            ParsePassion(skillsNode, "constructionPassion", ref this.constructionPassion);
             ParseRange(skillsNode, "miningRange", ref this.miningRange);
+            ParsePassion(skillsNode, "miningPassion", ref this.miningPassion);
             ParseRange(skillsNode, "cookingRange", ref this.cookingRange);
+            ParsePassion(skillsNode, "cookingPassion", ref this.cookingPassion);
             ParseRange(skillsNode, "plantsRange", ref this.plantsRange);
+            ParsePassion(skillsNode, "plantsPassion", ref this.plantsPassion);
             ParseRange(skillsNode, "animalsRange", ref this.animalsRange);
+            ParsePassion(skillsNode, "animalsPassion", ref this.animalsPassion);
             ParseRange(skillsNode, "craftingRange", ref this.craftingRange);
+            ParsePassion(skillsNode, "craftingPassion", ref this.craftingPassion);
+            ParseRange(skillsNode, "artisticRange", ref this.artisticRange);
+            ParsePassion(skillsNode, "artisticPassion", ref this.artisticPassion);
             ParseRange(skillsNode, "medicalRange", ref this.medicalRange);
+            ParsePassion(skillsNode, "medicalPassion", ref this.medicalPassion);
             ParseRange(skillsNode, "socialRange", ref this.socialRange);
+            ParsePassion(skillsNode, "socialPassion", ref this.socialPassion);
             ParseRange(skillsNode, "intellectualRange", ref this.intellectualRange);
+            ParsePassion(skillsNode, "intellectualPassion", ref this.intellectualPassion);
         }
 
         private void ParseMisc(XmlNode root)
@@ -828,6 +948,14 @@ namespace Nomadicooer.rimworld.prf
             range.min = min;
             range.max = max;
         }
+        private static void ParsePassion(XmlNode parent, string name, ref Passion passion)
+        {
+            XmlNode passionNode = parent.SelectSingleNode(name);
+            if (!Enum.TryParse(passionNode.InnerText, out passion))
+            {
+                passion = Passion.None;
+            }
+        }
         private void CheckSkill(IntRange intRange)
         {
             if (filterMode != FilterMode.OneInMillion)
@@ -840,7 +968,7 @@ namespace Nomadicooer.rimworld.prf
                 UIWidgets.ShowMessage<DialogSettings>(text);
             }
         }
-        internal void Rest()
+        internal void RestSettings()
         {
             //最大随机次数
             this.maxTimes = 1000;
@@ -860,28 +988,40 @@ namespace Nomadicooer.rimworld.prf
             this.ageRange = new IntRange(0, 100);
             //射击等级
             this.shootingRange = new IntRange(0, 20);
+            this.shootingPassion = Passion.None;
             //格斗等级
             this.meleeRange = new IntRange(0, 20);
+            this.meleePassion = Passion.None;
             //建造等级
             this.constructionRange = new IntRange(0, 20);
+            this.constructionPassion = Passion.None;
             //采矿等级
             this.miningRange = new IntRange(0, 20);
+            this.miningPassion = Passion.None;
             //烹饪等级
             this.cookingRange = new IntRange(0, 20);
+            this.cookingPassion = Passion.None;
             //种植等级
             this.plantsRange = new IntRange(0, 20);
+            this.plantsPassion = Passion.None;
             //驯兽等级
             this.animalsRange = new IntRange(0, 20);
+            this.animalsPassion = Passion.None;
             //手工等级
             this.craftingRange = new IntRange(0, 20);
+            this.craftingPassion = Passion.None;
             //艺术等级
             this.artisticRange = new IntRange(0, 20);
+            this.artisticPassion = Passion.None;
             //医疗等级
             this.medicalRange = new IntRange(0, 20);
+            this.medicalPassion = Passion.None;
             //射击等级
             this.socialRange = new IntRange(0, 20);
+            this.socialPassion = Passion.None;
             //智识等级
             this.intellectualRange = new IntRange(0, 20);
+            this.intellectualPassion = Passion.None;
             //幼年背景故事
             this.childHoodBackstories.Clear();
             //成年背景故事

@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <settings>
   <misc>
-    <filterMode>OneInMillion</filterMode>
-    <maxTimes>28000</maxTimes>
+    <filterMode>ChosenOne</filterMode>
+    <maxTimes>1000</maxTimes>
     <matchMode>Any</matchMode>
     <gender>None</gender>
     <disableWorkState>Nothing</disableWorkState>
@@ -15,60 +15,92 @@
   </misc>
   <skills>
     <shootingRange>
-      <min>0</min>
+      <min>15</min>
       <max>20</max>
     </shootingRange>
+    <shootingPassion>Major</shootingPassion>
     <meleeRange>
-      <min>0</min>
+      <min>15</min>
       <max>20</max>
     </meleeRange>
+    <meleePassion>Major</meleePassion>
     <constructionRange>
-      <min>0</min>
+      <min>15</min>
       <max>20</max>
     </constructionRange>
+    <constructionPassion>Major</constructionPassion>
     <miningRange>
-      <min>0</min>
+      <min>15</min>
       <max>20</max>
     </miningRange>
+    <miningPassion>Major</miningPassion>
     <cookingRange>
-      <min>0</min>
+      <min>15</min>
       <max>20</max>
     </cookingRange>
+    <cookingPassion>Major</cookingPassion>
     <plantsRange>
-      <min>0</min>
+      <min>15</min>
       <max>20</max>
     </plantsRange>
+    <plantsPassion>Major</plantsPassion>
     <animalsRange>
-      <min>0</min>
+      <min>15</min>
       <max>20</max>
     </animalsRange>
+    <animalsPassion>Major</animalsPassion>
     <craftingRange>
-      <min>0</min>
+      <min>15</min>
       <max>20</max>
     </craftingRange>
+    <craftingPassion>Major</craftingPassion>
     <artisticRange>
-      <min>0</min>
+      <min>15</min>
       <max>20</max>
     </artisticRange>
+    <artisticPassion>Major</artisticPassion>
     <medicalRange>
-      <min>0</min>
+      <min>15</min>
       <max>20</max>
     </medicalRange>
+    <medicalPassion>Major</medicalPassion>
     <socialRange>
-      <min>0</min>
+      <min>15</min>
       <max>20</max>
     </socialRange>
+    <socialPassion>Major</socialPassion>
     <intellectualRange>
-      <min>0</min>
+      <min>15</min>
       <max>20</max>
     </intellectualRange>
+    <intellectualPassion>Major</intellectualPassion>
   </skills>
-  <childHoodBackstories>
-    <defName>SpaceSmuggler6</defName>
-    <defName>MedievalSlave49</defName>
-    <defName>RoyalBastard64</defName>
-    <defName>CommonerHeir5</defName>
-  </childHoodBackstories>
+  <childHoodBackstories />
   <adulthoodBackstories />
-  <traits />
+  <traits>
+    <trait>
+      <defName>Bloodlust</defName>
+      <degree>0</degree>
+    </trait>
+    <trait>
+      <defName>Cannibal</defName>
+      <degree>0</degree>
+    </trait>
+    <trait>
+      <defName>Psychopath</defName>
+      <degree>0</degree>
+    </trait>
+    <trait>
+      <defName>TooSmart</defName>
+      <degree>0</degree>
+    </trait>
+    <trait>
+      <defName>Abrasive</defName>
+      <degree>0</degree>
+    </trait>
+    <trait>
+      <defName>Kind</defName>
+      <degree>0</degree>
+    </trait>
+  </traits>
 </settings>

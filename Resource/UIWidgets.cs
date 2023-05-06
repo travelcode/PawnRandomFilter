@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Printing;
 using Nomadicooer.rimworld.prf;
+using RimWorld;
 using UnityEngine;
 using Verse;
+using static Mono.Security.X509.X520;
 
 namespace Nomadicooer.rimworld.prf
 {
@@ -104,6 +107,43 @@ namespace Nomadicooer.rimworld.prf
             Widgets.IntRange(rect, rect.GetHashCode(), ref intRange, min, max, null, minInvterval);
             return intRange;
         }
+        internal static SkillInfo SkillIntRangeSlider(string titleKey, SkillInfo skillInfo, int min = 0, int max = 20, int minInvterval = 0)
+        {
+            Rect rect = Preprocesse(titleKey.LabelText(), titleKey.TooltipText());
+            Rect passionRect = new Rect(rect.x + BasicSize, rect.y, rect.height, rect.height);
+            Widgets.DrawLightHighlight(passionRect);
+            GUIContent content = GUIContent.none;
+            if (skillInfo.passion == Passion.Minor)
+            {
+                content = new GUIContent(SkillUI.PassionMinorIcon);
+            }
+            else if (skillInfo.passion == Passion.Major)
+            {
+                content = new GUIContent(SkillUI.PassionMajorIcon);
+            }
+            if (GUI.Button(passionRect, content,GUIStyle.none))
+            {
+                if (skillInfo.passion == Passion.None)
+                {
+                    skillInfo.passion = Passion.Minor;
+                }
+                else if (skillInfo.passion == Passion.Minor)
+                {
+                    skillInfo.passion = Passion.Major;
+                }
+                else if (skillInfo.passion == Passion.Major)
+                {
+                    skillInfo.passion = Passion.None;
+                }
+            }
+            rect.x = rect.x + passionRect.width + BasicSize * 2;
+            rect.width = rect.width - passionRect.width - BasicSize * 2;
+            Widgets.IntRange(rect, rect.GetHashCode(), ref skillInfo.intRange, min, max, null, minInvterval);
+            return skillInfo;
+        }
+
+
+
         internal static List<TItem> ListViewSelector<TItem>(ListViewSelector<TItem> selector)
         {
             Rect rect = IncrementLine(ListViewLines);
