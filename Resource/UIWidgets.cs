@@ -54,16 +54,6 @@ namespace Nomadicooer.rimworld.prf
             Widgets.IntEntry(itemRect, ref value, ref editBuffer, multiplier);
             return value;
         }
-        internal static void SaveButton()
-        {
-            Rect rect = IncrementLine();
-            float x = rect.x + (rect.width - 100) / 2;
-            Rect buttonArea = new Rect(x, rect.y, 100, rect.height);
-            if (Widgets.ButtonText(buttonArea, "Save".Translate()))
-            {
-                FilterSettings.Instance.Save();
-            }
-        }
         internal static IEnum RadioButtonGroup<IEnum>(IEnum chosen) where IEnum : Enum
         {
             Type type = typeof(IEnum);

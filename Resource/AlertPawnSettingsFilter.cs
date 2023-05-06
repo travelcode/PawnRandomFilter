@@ -24,7 +24,6 @@ namespace Nomadicooer.rimworld.prf
             curWinRect = window.windowRect;
             curWinRect = new Rect(curWinRect.x, curWinRect.y - AlertHeight - 2, curWinRect.width, AlertHeight);
             float totalMargin = 2 * Margin;
-            //将文本开始位置设置到最右边
             textRect = new Rect(0, 0, curWinRect.width, curWinRect.height);
             endTime = DateTime.Now.AddSeconds(interverSecond);
         }
